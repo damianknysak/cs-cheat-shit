@@ -64,11 +64,17 @@ function makeSpawnPosition(spawnNumber: number): MapPosition {
 const mirage: GameMap = {
   id: 'mirage',
   name: 'Mirage',
+  thumbnail: 'images/maps/mirage.png',
   spawnSelectImage: 'images/mirage/t-spawn-select.webp',
   positions: Array.from({ length: 10 }, (_, i) => makeSpawnPosition(i + 1)),
 }
 
-const emptyMap = (id: string, name: string): GameMap => ({ id, name, positions: [] })
+const emptyMap = (id: string, name: string): GameMap => ({
+  id,
+  name,
+  thumbnail: `images/maps/${id}.png`,
+  positions: [],
+})
 
 export const maps: GameMap[] = [
   mirage,

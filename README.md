@@ -61,10 +61,16 @@ Dane lineupów dla Mirage (spawny 1-10, każdy: insta window + insta top mid) to
 **przykładowa treść do zweryfikowania** - podane pozycje/cele warto
 sprawdzić/doprecyzować przed realnym użyciem w grze.
 
-Wyjątek: `public/images/mirage/t-spawn-select.webp` (siatka do wyboru spawnu)
-to obrazek pobrany z `assets.csnades.gg` na wyraźną prośbę i decyzję
-właściciela repo - świadomie przyjęte ryzyko praw autorskich do cudzej
-grafiki, nie nasz placeholder.
+Wyjątki (nie placeholdery):
+
+- `public/images/mirage/t-spawn-select.webp` (siatka do wyboru spawnu) -
+  pobrany z `assets.csnades.gg` na wyraźną prośbę i decyzję właściciela repo,
+  świadomie przyjęte ryzyko praw autorskich do cudzej grafiki.
+- `public/images/maps/*.png` (ikonki map na stronie głównej) - oficjalne
+  ikony map CS2 wyciągnięte z plików gry (depot), pobrane z
+  [MurkyYT/cs2-map-icons](https://github.com/MurkyYT/cs2-map-icons). To
+  assety Valve, nie cudza kompozycja - inna kategoria ryzyka niż powyższy
+  punkt.
 
 ## Deploy (GitHub Pages)
 

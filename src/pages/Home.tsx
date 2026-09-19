@@ -23,7 +23,13 @@ export function Home() {
                 isEmpty ? 'opacity-60' : ''
               }`}
             >
-              <PlaceholderImage image={map.thumbnail} label={map.name} className="aspect-square" />
+              <PlaceholderImage
+                image={map.thumbnail}
+                label={map.name}
+                aspectClassName="aspect-square"
+                fitClassName="object-contain"
+                className="bg-neutral-950 p-2"
+              />
               <div>
                 <p className="font-semibold text-neutral-100">{map.name}</p>
                 <p className="text-xs text-neutral-500">
