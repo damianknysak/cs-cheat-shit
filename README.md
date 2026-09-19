@@ -1,7 +1,8 @@
 # cs-cheat-shit
 
 Responsywna, czysto kliencka apka pokazująca insta smoki / lineupy dla CS2.
-Wybierasz mapę → spawn/pozycję → widzisz lineup (obrazek + opis + klawisze).
+Wybierasz mapę → klikasz numer swojego spawnu → widzisz lineupy (Insta Window,
+Insta Top Mid) osobno, każdy z krokami (obrazek + opis + klawisze).
 
 Build: React + Vite + TypeScript + Tailwind CSS + React Router (`HashRouter`,
 żeby routing działał na GitHub Pages bez dodatkowej konfiguracji serwera).
@@ -29,14 +30,15 @@ Wszystkie mapy i lineupy są w [src/data/maps.ts](src/data/maps.ts), typy w
 
 ```
 GameMap
- └─ positions: MapPosition[]      // np. "T Spawn"
+ └─ positions: MapPosition[]      // np. "Spawn 5" (number: 5)
      └─ lineups: Lineup[]         // np. "Insta smoke - Window"
          └─ steps: LineupStep[]   // np. Pozycja / Cel / Rzut
 ```
 
-Żeby dodać nową mapę lub pozycję, wystarczy rozszerzyć tablicę `maps` w
-`src/data/maps.ts` - UI (grid map, selektor pozycji, karty lineupów) obsłuży
-to automatycznie.
+Żeby dodać nową mapę lub spawn, wystarczy rozszerzyć tablicę `maps` w
+`src/data/maps.ts` - UI (grid map, siatka numerów spawnów, karty lineupów)
+obsłuży to automatycznie. Numer spawnu (pole `number`) to to, co widać na
+siatce wyboru w [SpawnSelector](src/components/SpawnSelector.tsx).
 
 ## Obrazki (placeholdery -> prawdziwe screeny)
 
@@ -53,7 +55,7 @@ autorskich). Żeby podmienić na prawdziwy obrazek:
 Jeśli `image` nie jest ustawione, komponent sam pokaże placeholder - nie trzeba
 nic więcej zmieniać w kodzie.
 
-Dane lineupów dla Mirage (T Spawn: insta window, insta top mid) to
+Dane lineupów dla Mirage (spawny 1-10, każdy: insta window + insta top mid) to
 **przykładowa treść do zweryfikowania** - podane pozycje/cele warto
 sprawdzić/doprecyzować przed realnym użyciem w grze.
 

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getMapById } from '../data/maps'
 import { LineupCard } from '../components/LineupCard'
+import { SpawnSelector } from '../components/SpawnSelector'
 
 export function MapPage() {
   const { mapId } = useParams<{ mapId: string }>()
@@ -31,27 +32,24 @@ export function MapPage() {
         </p>
       ) : (
         <>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {map.positions.map((position) => (
-              <button
-                key={position.id}
-                onClick={() => setSelectedPositionId(position.id)}
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
-                  selectedPosition?.id === position.id
-                    ? 'bg-neutral-100 text-neutral-900'
-                    : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
-                }`}
-              >
-                {position.name}
-              </button>
-            ))}
+          <div className="mt-4">
+            <SpawnSelector
+              positions={map.positions}
+              selectedId={selectedPosition?.id ?? null}
+              onSelect={setSelectedPositionId}
+            />
           </div>
 
-          <div className="mt-6 flex flex-col gap-4">
-            {selectedPosition?.lineups.map((lineup) => (
-              <LineupCard key={lineup.id} lineup={lineup} />
-            ))}
-          </div>
+          {selectedPosition && (
+            <div className="mt-6">
+              <h2 className="text-lg font-semibold text-neutral-200">{selectedPosition.name}</h2>
+              <div className="mt-3 flex flex-col gap-4">
+                {selectedPosition.lineups.map((lineup) => (
+                  <LineupCard key={lineup.id} lineup={lineup} />
+                ))}
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>

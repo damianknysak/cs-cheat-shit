@@ -23,6 +23,8 @@ export interface Lineup {
 export interface MapPosition {
   id: string
   name: string
+  /** Spawn number shown on the spawn-select grid, e.g. 5. */
+  number: number
   lineups: Lineup[]
 }
 
