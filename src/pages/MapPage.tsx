@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { getMapById } from '../data/maps'
 import { LineupCard } from '../components/LineupCard'
 import { SpawnSelector } from '../components/SpawnSelector'
+import { SpawnImageSelector } from '../components/SpawnImageSelector'
 
 export function MapPage() {
   const { mapId } = useParams<{ mapId: string }>()
@@ -33,11 +34,20 @@ export function MapPage() {
       ) : (
         <>
           <div className="mt-4">
-            <SpawnSelector
-              positions={map.positions}
-              selectedId={selectedPosition?.id ?? null}
-              onSelect={setSelectedPositionId}
-            />
+            {map.spawnSelectImage ? (
+              <SpawnImageSelector
+                image={map.spawnSelectImage}
+                positions={map.positions}
+                selectedId={selectedPosition?.id ?? null}
+                onSelect={setSelectedPositionId}
+              />
+            ) : (
+              <SpawnSelector
+                positions={map.positions}
+                selectedId={selectedPosition?.id ?? null}
+                onSelect={setSelectedPositionId}
+              />
+            )}
           </div>
 
           {selectedPosition && (

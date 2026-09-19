@@ -1,3 +1,5 @@
+import { withBase } from '../lib/paths'
+
 interface PlaceholderImageProps {
   image?: string
   label: string
@@ -8,7 +10,7 @@ export function PlaceholderImage({ image, label, className = '' }: PlaceholderIm
   if (image) {
     return (
       <img
-        src={image}
+        src={withBase(image)}
         alt={label}
         className={`aspect-video w-full rounded-lg object-cover ${className}`}
       />

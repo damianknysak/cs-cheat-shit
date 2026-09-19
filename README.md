@@ -50,14 +50,21 @@ autorskich). Żeby podmienić na prawdziwy obrazek:
 1. Wrzuć plik do `public/images/<mapa>/<nazwa>.jpg` (np.
    `public/images/mirage/window-1.jpg`).
 2. W `src/data/maps.ts` ustaw pole `image` danego kroku (`LineupStep`) na
-   `/images/mirage/window-1.jpg`.
+   `images/mirage/window-1.jpg` (bez `/` na początku).
 
-Jeśli `image` nie jest ustawione, komponent sam pokaże placeholder - nie trzeba
-nic więcej zmieniać w kodzie.
+Ścieżki obrazków przechodzą przez [withBase()](src/lib/paths.ts), który
+doklei aktualny `base` z `vite.config.ts` (`/cs-cheat-shit/`) - dlatego w
+danych **nie** zaczynamy ścieżki od `/`. Jeśli `image` nie jest ustawione,
+komponent sam pokaże placeholder - nie trzeba nic więcej zmieniać w kodzie.
 
 Dane lineupów dla Mirage (spawny 1-10, każdy: insta window + insta top mid) to
 **przykładowa treść do zweryfikowania** - podane pozycje/cele warto
 sprawdzić/doprecyzować przed realnym użyciem w grze.
+
+Wyjątek: `public/images/mirage/t-spawn-select.webp` (siatka do wyboru spawnu)
+to obrazek pobrany z `assets.csnades.gg` na wyraźną prośbę i decyzję
+właściciela repo - świadomie przyjęte ryzyko praw autorskich do cudzej
+grafiki, nie nasz placeholder.
 
 ## Deploy (GitHub Pages)
 

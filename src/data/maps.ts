@@ -37,11 +37,26 @@ function makeInstaSmoke(spawnNumber: number, target: 'Window' | 'Top Mid'): Line
   }
 }
 
+// % pozycja środka numerka na public/images/mirage/t-spawn-select.webp
+const SPAWN_COORDS: Record<number, { xPct: number; yPct: number }> = {
+  1: { xPct: 80.5, yPct: 89.8 },
+  2: { xPct: 15, yPct: 89.8 },
+  3: { xPct: 72.25, yPct: 58.2 },
+  4: { xPct: 54.5, yPct: 60.9 },
+  5: { xPct: 39, yPct: 60.9 },
+  6: { xPct: 23.5, yPct: 58.2 },
+  7: { xPct: 79.25, yPct: 40.9 },
+  8: { xPct: 63.75, yPct: 40.9 },
+  9: { xPct: 48.25, yPct: 40.9 },
+  10: { xPct: 32.75, yPct: 40.9 },
+}
+
 function makeSpawnPosition(spawnNumber: number): MapPosition {
   return {
     id: `spawn-${spawnNumber}`,
     name: `Spawn ${spawnNumber}`,
     number: spawnNumber,
+    coords: SPAWN_COORDS[spawnNumber],
     lineups: [makeInstaSmoke(spawnNumber, 'Window'), makeInstaSmoke(spawnNumber, 'Top Mid')],
   }
 }
@@ -49,6 +64,7 @@ function makeSpawnPosition(spawnNumber: number): MapPosition {
 const mirage: GameMap = {
   id: 'mirage',
   name: 'Mirage',
+  spawnSelectImage: 'images/mirage/t-spawn-select.webp',
   positions: Array.from({ length: 10 }, (_, i) => makeSpawnPosition(i + 1)),
 }
 

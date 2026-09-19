@@ -25,6 +25,8 @@ export interface MapPosition {
   name: string
   /** Spawn number shown on the spawn-select grid, e.g. 5. */
   number: number
+  /** Center of this spawn's marker on `GameMap.spawnSelectImage`, in % of image width/height. */
+  coords?: { xPct: number; yPct: number }
   lineups: Lineup[]
 }
 
@@ -33,5 +35,7 @@ export interface GameMap {
   name: string
   /** Path under /public, e.g. "/images/maps/mirage.jpg". Leave undefined to show a placeholder. */
   thumbnail?: string
+  /** Path under /public to a spawn-select image with numbered spawns (see MapPosition.coords). */
+  spawnSelectImage?: string
   positions: MapPosition[]
 }
